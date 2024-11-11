@@ -1,6 +1,5 @@
 package univesp.projetointegrador.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -22,7 +21,7 @@ public class Emprestimo {
     private int exemplarId;
 
     @Transient
-    private int prazo;
+    private int diasFaltantes;
 
     @Column(name = "data_emprestimo", nullable = false, updatable = false)
     private LocalDateTime dataEmprestimo;
@@ -31,12 +30,12 @@ public class Emprestimo {
     private LocalDateTime dataEntrega;
 
 
-    public int getPrazo() {
-        return prazo;
+    public int getDiasFaltantes() {
+        return diasFaltantes;
     }
 
-    public void setPrazo(int prazo) {
-        this.prazo = prazo;
+    public void setDiasFaltantes(int diasFaltantes) {
+        this.diasFaltantes = diasFaltantes;
     }
 
     public Integer getId() {

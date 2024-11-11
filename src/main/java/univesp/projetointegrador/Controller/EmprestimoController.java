@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import univesp.projetointegrador.Model.Emprestimo;
 import univesp.projetointegrador.Repository.EmprestimoRepository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +28,7 @@ public class EmprestimoController {
     @GetMapping("/{id}")
     public ResponseEntity<Emprestimo> getEmprestimoById(@PathVariable Long id) {
         Optional<Emprestimo> emprestimo = emprestimoRepository.findById(id);
-        emprestimo.get().setPrazo(emprestimo.get().DiasParaEntrega(emprestimo.get().getDataEntrega()));
+        emprestimo.get().setDiasFaltantes(emprestimo.get().DiasParaEntrega(emprestimo.get().getDataEntrega()));
 
         return emprestimo.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
