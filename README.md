@@ -4,7 +4,7 @@
 Esta API permite a gestão de avisos para condomínios.
 
 Base URL
-```https://mural-avisos-condominio-api-7ac88d72637c.herokuapp.com```
+```https://mural-avisos-condominio-api-ebaa5089fa03.herokuapp.com```
 
 
 
@@ -366,4 +366,214 @@ Este endpoint cria uma mensagem no sistema e retorna os dados cadastrados.
   }
 ]
 ```
+
+
+
+
+## EXEMPLARES
+
+### GetAll 
+
+Este endpoint retorna todos os exemplares cadastrados no sistema.
+
+- URL: /exemplares
+- Método HTTP: GET
+- Requisição: Não requer parâmetros adicionais.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+[
+  {
+    "id": 1,
+    "titulo": "The Fellowship of the Ring",
+    "autor": "J. R. R. Tokien",
+    "anoEdicao": 2000,
+    "numPaginas": 699,
+    "resumo": "Primeira parte da jornada da sociedade do Anel",
+    "editora": "Editora que editou",
+    "assuntoTema": "O começo da distribuição do anel",
+    "lingua": "Inglês",
+    "qtdEmprestimos": 0,
+    "emprestado": false
+  },
+  {
+    "id": 2,
+    "titulo": "Java Programming Fundamentals",
+    "autor": "John Doe",
+    "anoEdicao": 2022,
+    "numPaginas": 450,
+    "resumo": "Este livro cobre os fundamentos de programação em Java, abordando desde o básico até conceitos avançados.",
+    "editora": "Editora Exemplo",
+    "assuntoTema": "Programação",
+    "lingua": "Português",
+    "qtdEmprestimos": 5,
+    "emprestado": false
+  },
+  // Outros exemplares...
+]
+```
+
+### GetByID 
+
+Este endpoint retorna um exemplar igual ao ID passado, cadastrados no sistema.
+
+- URL: /exemplar/{id}
+- Método HTTP: GET
+- Requisição: substituir o {id} pelo numero do ID que se quer.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta se mandar: /exemplar/1:
+
+```
+{
+  "id": 1,
+  "titulo": "The Fellowship of the Ring",
+  "autor": "J. R. R. Tokien",
+  "anoEdicao": 2000,
+  "numPaginas": 699,
+  "resumo": "Primeira parte da jornada da sociedade do Anel",
+  "editora": "Editora que editou",
+  "assuntoTema": "O começo da distribuição do anel",
+  "lingua": "Inglês",
+  "qtdEmprestimos": 0,
+  "emprestado": false
+}
+```
+
+### Create 
+
+Este endpoint cria um exemplar no sistema e retorna os dados cadastrados.
+
+- URL: /exemplar
+- Método HTTP: POST
+- Requisição: enviar um BODY objeto JSON com os dados do exemplar para cadastrar (não enviar campo ID), exemplo:
+```
+{
+    "titulo": "História da Arte",
+    "autor": "Carlos Souza",
+    "anoEdicao": 2019,
+    "numPaginas": 280,
+    "resumo": "Explora a evolução da arte através dos séculos, abordando desde o período renascentista até a arte contemporânea.",
+    "editora": "Editora Cultural",
+    "assuntoTema": "Arte",
+    "lingua": "Português",
+    "qtdEmprestimos": 7,
+    "emprestado": false
+}
+```
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+{
+  "id": 6,
+  "titulo": "História da Arte",
+  "autor": "Carlos Souza",
+  "anoEdicao": 2019,
+  "numPaginas": 280,
+  "resumo": "Explora a evolução da arte através dos séculos, abordando desde o período renascentista até a arte contemporânea.",
+  "editora": "Editora Cultural",
+  "assuntoTema": "Arte",
+  "lingua": "Português",
+  "qtdEmprestimos": 7,
+  "emprestado": false
+}
+```
+
+
+
+
+
+## EMPRESTIMOS
+
+### GetAll 
+
+Este endpoint retorna todos os emprestimos cadastrados no sistema.
+
+- URL: /emprestimos
+- Método HTTP: GET
+- Requisição: Não requer parâmetros adicionais.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+[
+  {
+    "id": 1,
+    "dataEntrega": "2024-11-17T14:00:00",
+    "diasFaltantes": 6,
+    "dataEmprestimo": "2024-11-10T14:00:00",
+    "usuario_id": 2,
+    "exemplar_id": 1
+  },
+  {
+    "id": 2,
+    "dataEntrega": "2024-11-30T14:00:00",
+    "diasFaltantes": 19,
+    "dataEmprestimo": "2024-11-10T14:00:00",
+    "usuario_id": 2,
+    "exemplar_id": 1
+  },
+  // Outras mensagens...
+]
+```
+
+### GetByID 
+
+Este endpoint retorna um emprestimo igual ao ID passado, cadastrados no sistema.
+
+- URL: /emprestimos/{id}
+- Método HTTP: GET
+- Requisição: substituir o {id} pelo numero do ID que se quer.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta se mandar: /mensagens/1:
+
+```
+{
+  "id": 2,
+  "diasFaltantes": 19,
+  "dataEmprestimo": "2024-11-10T17:00:00",
+  "dataEntrega": "2024-11-30T17:00:00",
+  "usuario_id": 2,
+  "exemplar_id": 1
+}
+```
+
+### Create 
+
+Este endpoint cria um emprestimo no sistema e retorna os dados cadastrados.
+
+- URL: /emprestimos
+- Método HTTP: POST
+- Requisição: enviar um BODY objeto JSON com os dados d0 emprestimo para cadastrar (não enviar campo ID), exemplo:
+```
+{
+    "usuario_id": 2,
+    "exemplar_id": 1,
+    "dataEmprestimo": "2023-11-10T14:00:00",
+    "dataEntrega": "2023-11-17T14:00:00"
+}
+
+```
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+{
+  "id": 5,
+  "diasFaltantes": 0,
+  "dataEmprestimo": "2023-11-10T14:00:00",
+  "dataEntrega": "2023-11-17T14:00:00",
+  "usuario_id": 2,
+  "exemplar_id": 1
+}
+```
+*OBS: o campo diasFaltantes sempre virá zerado neste endpoint pois ele só tem este calculo quando é um GET.
+
 
