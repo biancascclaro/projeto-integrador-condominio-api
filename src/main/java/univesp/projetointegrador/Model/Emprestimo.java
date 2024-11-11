@@ -20,18 +20,18 @@ public class Emprestimo {
     @JsonProperty("exemplar_id")
     private int exemplarId;
 
+    @Column(name = "data_entrega")
+    private LocalDateTime dataEntrega;
+
     @Transient
     private int diasFaltantes;
 
     @Column(name = "data_emprestimo", nullable = false, updatable = false)
     private LocalDateTime dataEmprestimo;
 
-    @Column(name = "data_entrega")
-    private LocalDateTime dataEntrega;
-
 
     public int getDiasFaltantes() {
-        return diasFaltantes;
+        return DiasParaEntrega(dataEntrega);
     }
 
     public void setDiasFaltantes(int diasFaltantes) {

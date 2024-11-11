@@ -28,8 +28,6 @@ public class EmprestimoController {
     @GetMapping("/{id}")
     public ResponseEntity<Emprestimo> getEmprestimoById(@PathVariable Long id) {
         Optional<Emprestimo> emprestimo = emprestimoRepository.findById(id);
-        emprestimo.get().setDiasFaltantes(emprestimo.get().DiasParaEntrega(emprestimo.get().getDataEntrega()));
-
         return emprestimo.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
