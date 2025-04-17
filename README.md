@@ -4,7 +4,7 @@
 Esta API permite a gestão de avisos para condomínios.
 
 Base URL
-```https://mural-avisos-condominio-api-ebaa5089fa03.herokuapp.com```
+```https://projeto-integrador-condominio-ca8d84a20eec.herokuapp.com```
 
 
 
