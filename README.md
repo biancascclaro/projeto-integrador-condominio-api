@@ -122,7 +122,6 @@ Este endpoint cria um usuario no sistema e retorna os dados cadastrados.
 - Método HTTP: POST
 - Requisição: enviar um BODY objeto JSON com os dados do usuario para cadastrar (não enviar campo ID), exemplo:
 ```
-[
   {
     "data_hora_registro": "2024-04-28T13:34:02.000+00:00",
     "CPF": "12345678911",
@@ -135,7 +134,6 @@ Este endpoint cria um usuario no sistema e retorna os dados cadastrados.
     "status_usuario": true,
     "senha": "aaabbbccc"
   }
-]
 ```
 - Resposta de Sucesso: Código 200 OK
 
@@ -237,7 +235,6 @@ Este endpoint cria um problema de elevador no sistema e retorna os dados cadastr
 - Método HTTP: POST
 - Requisição: enviar um BODY objeto JSON com os dados do problema de elevador para cadastrar (não enviar campo ID), exemplo:
 ```
-[
   {
     "usuario_id": 2,
     "data_hora_registro": "2024-05-06T10:15:30.000+00:00",
@@ -248,7 +245,6 @@ Este endpoint cria um problema de elevador no sistema e retorna os dados cadastr
     "problema_solucionado": false,
     "exibir": true
   }
-]
 ```
 - Resposta de Sucesso: Código 200 OK
 
@@ -341,7 +337,6 @@ Este endpoint cria uma mensagem no sistema e retorna os dados cadastrados.
 - Método HTTP: POST
 - Requisição: enviar um BODY objeto JSON com os dados da mensagem para cadastrar (não enviar campo ID), exemplo:
 ```
-[
   {
     "data_hora_registro": "2024-05-06T10:15:30.000+00:00",
     "assunto": "pets",
@@ -518,7 +513,7 @@ Este endpoint retorna todos os emprestimos cadastrados no sistema.
     "usuario_id": 2,
     "exemplar_id": 1
   },
-  // Outras mensagens...
+  // Outros emprestimos...
 ]
 ```
 
@@ -531,7 +526,7 @@ Este endpoint retorna um emprestimo igual ao ID passado, cadastrados no sistema.
 - Requisição: substituir o {id} pelo numero do ID que se quer.
 - Resposta de Sucesso: Código 200 OK
 
-- Exemplo de Corpo da Resposta se mandar: /mensagens/1:
+- Exemplo de Corpo da Resposta se mandar: /emprestimos/1:
 
 ```
 {
@@ -558,7 +553,6 @@ Este endpoint cria um emprestimo no sistema e retorna os dados cadastrados.
     "dataEmprestimo": "2023-11-10T14:00:00",
     "dataEntrega": "2023-11-17T14:00:00"
 }
-
 ```
 - Resposta de Sucesso: Código 200 OK
 
@@ -575,5 +569,271 @@ Este endpoint cria um emprestimo no sistema e retorna os dados cadastrados.
 }
 ```
 *OBS: o campo diasFaltantes sempre virá zerado neste endpoint pois ele só tem este calculo quando é um GET.
+
+
+
+
+
+## ANÚNCIOS
+
+### GetAll
+
+Este endpoint retorna todos os anuncios cadastrados no sistema.
+
+- URL: /anuncios
+- Método HTTP: GET
+- Requisição: Não requer parâmetros adicionais.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+[
+    {
+        "id": 1,
+        "data_hora_registro": "2023-10-01T10:00:00.000+00:00",
+        "nome_empresa": "Loja de Eletrônicos XYZ",
+        "categoria_id": 2,
+        "telefone": "11987875423",
+        "email": "contato@lojaeletronicosxyz.com",
+        "site": "https://www.lojaeletronicosxyz.com",
+        "redes_sociais": "@lojaeletronicosxyz",
+        "descricao": "Oferecemos uma ampla variedade de eletrônicos com os melhores preços do mercado.",
+        "avaliacao_usuario": 4,
+        "usuario_id": 1
+    },
+    {
+        "id": 2,
+        "data_hora_registro": "2023-10-02T14:30:00.000+00:00",
+        "nome_empresa": "Cafeteria Aroma",
+        "categoria_id": 1,
+        "telefone": "21998765432",
+        "email": "contato@cafeteriaaroma.com",
+        "site": "https://www.cafeteriaaroma.com",
+        "redes_sociais": "@cafeteriaaroma",
+        "descricao": "Venha experimentar nossos cafés especiais e lanches deliciosos.",
+        "avaliacao_usuario": 5,
+        "usuario_id": 2
+    },
+  // Outros anuncios...
+]
+```
+
+### GetByID
+
+Este endpoint retorna um anuncio igual ao ID passado, cadastrados no sistema.
+
+- URL: /anuncios/{id}
+- Método HTTP: GET
+- Requisição: substituir o {id} pelo numero do ID que se quer.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta se mandar: /anuncios/1:
+
+```
+{
+    "id": 1,
+    "data_hora_registro": "2023-10-01T10:00:00.000+00:00",
+    "nome_empresa": "Loja de Eletrônicos XYZ",
+    "categoria_id": 2,
+    "telefone": "11987875423",
+    "email": "contato@lojaeletronicosxyz.com",
+    "site": "https://www.lojaeletronicosxyz.com",
+    "redes_sociais": "@lojaeletronicosxyz",
+    "descricao": "Oferecemos uma ampla variedade de eletrônicos com os melhores preços do mercado.",
+    "avaliacao_usuario": 4,
+    "usuario_id": 1
+}
+```
+
+### Create
+
+Este endpoint cria um anuncio no sistema e retorna os dados cadastrados.
+
+- URL: /anuncios
+- Método HTTP: POST
+- Requisição: enviar um BODY objeto JSON com os dados do anuncio para cadastrar (não enviar campo ID), exemplo:
+```
+{
+    "data_hora_registro": "2023-10-06T15:30:00",
+    "nome_empresa": "Oficina Mecânica AutoPrime",
+    "categoria_id": 6,
+    "telefone": "(11) 93456-1234",
+    "email": "contato@autoprime.com",
+    "site": "https://www.autoprime.com",
+    "redes_sociais": "@autoprime",
+    "descricao": "Serviços mecanicos de alta qualidade para seu veículo, com profissionais especializados.",
+    "avaliacao_usuario": 4,
+    "usuario_id": 6
+}
+```
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+{
+    "id": 8,
+    "data_hora_registro": "2023-10-06T15:30:00.000+00:00",
+    "nome_empresa": "Oficina Mecânica AutoPrime",
+    "categoria_id": 1,
+    "telefone": "11934561234",
+    "email": "contato@autoprime.com",
+    "site": "https://www.autoprime.com",
+    "redes_sociais": "@autoprime",
+    "descricao": "Serviços mecanicos de alta qualidade para seu veículo, com profissionais especializados.",
+    "avaliacao_usuario": 4,
+    "usuario_id": 6
+}
+```
+
+
+
+
+
+## AVALIACOES
+
+### GetAll
+
+Este endpoint retorna todas as avaliacoes cadastrados no sistema.
+
+- URL: /avaliacoes
+- Método HTTP: GET
+- Requisição: Não requer parâmetros adicionais.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+[
+    {
+        "id": 1,
+        "avaliacao": "muito insatisfeito"
+    },
+    {
+        "id": 2,
+        "avaliacao": "insatisfeito"
+    },
+  // Outras avaliacoes...
+]
+```
+
+### GetByID
+
+Este endpoint retorna uma avaliacao igual ao ID passado, cadastrados no sistema.
+
+- URL: /avaliacoes/{id}
+- Método HTTP: GET
+- Requisição: substituir o {id} pelo numero do ID que se quer.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta se mandar: /avaliacoes/1:
+
+```
+{
+    "id": 1,
+    "avaliacao": "muito insatisfeito"
+}
+```
+
+### Create
+
+Este endpoint cria uma avaliacao no sistema e retorna os dados cadastrados.
+
+- URL: /avaliacoes
+- Método HTTP: POST
+- Requisição: enviar um BODY objeto JSON com os dados da avaliacao para cadastrar (não enviar campo ID), exemplo:
+```
+{
+    "avaliacao": "extraordinário"
+}
+```
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+{
+    "id": 6,
+    "avaliacao": "extraordinário"
+}
+```
+
+
+
+
+
+## CATEGORIAS
+
+### GetAll
+
+Este endpoint retorna todos as categorias cadastrados no sistema.
+
+- URL: /categorias
+- Método HTTP: GET
+- Requisição: Não requer parâmetros adicionais.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+[
+    {
+        "id": 1,
+        "nome": "pedreiro",
+        "descricao": "serviços de mão de obra de pedreiro, como por exemplo reformas e acabamentos"
+    },
+    {
+        "id": 2,
+        "nome": "cozinheiro",
+        "descricao": "serviços de buffet, marmitas, refeições e churrasco, por exemplo"
+    },
+  // Outras categorias...
+]
+```
+
+### GetByID
+
+Este endpoint retorna uma categoria igual ao ID passado, cadastrados no sistema.
+
+- URL: /categorias/{id}
+- Método HTTP: GET
+- Requisição: substituir o {id} pelo numero do ID que se quer.
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta se mandar: /categorias/1:
+
+```
+{
+    "id": 1,
+    "nome": "pedreiro",
+    "descricao": "serviços de mão de obra de pedreiro, como por exemplo reformas e acabamentos"
+}
+```
+
+### Create
+
+Este endpoint cria uma categoria no sistema e retorna os dados cadastrados.
+
+- URL: /categorias
+- Método HTTP: POST
+- Requisição: enviar um BODY objeto JSON com os dados da categoria para cadastrar (não enviar campo ID), exemplo:
+```
+{
+        "nome": "pessoa desenvolvedora de software",
+        "descricao": "serviços de criação, manutenção e atualização de aplicativos e sistemas computacionais"
+}
+```
+- Resposta de Sucesso: Código 200 OK
+
+- Exemplo de Corpo da Resposta:
+
+```
+{
+    "id": 4,
+    "nome": "pessoa desenvolvedora de software",
+    "descricao": "serviços de criação, manutenção e atualização de aplicativos e sistemas computacionais"
+}
+```
 
 
