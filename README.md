@@ -657,8 +657,8 @@ Este endpoint cria um anuncio no sistema e retorna os dados cadastrados.
 {
     "data_hora_registro": "2023-10-06T15:30:00",
     "nome_empresa": "Oficina Mecânica AutoPrime",
-    "categoria_id": 6,
-    "telefone": "(11) 93456-1234",
+    "categoria_id": 1,
+    "telefone": "1193456-1234",
     "email": "contato@autoprime.com",
     "site": "https://www.autoprime.com",
     "redes_sociais": "@autoprime",
